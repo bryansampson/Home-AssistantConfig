@@ -1,0 +1,4 @@
+- platform: crimereports
+  name: crime_reports
+  radius: 5000
+ 

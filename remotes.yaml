@@ -1,0 +1,4 @@
+- platform: harmony
+  name: living_room
+  host: !secret harmony_hub_ip
+

@@ -1,0 +1,194 @@
+input_select:
+  harmony:
+    name: Harmony Control
+    options:
+      - Select Activity
+      - Watch Movies
+      - Watch Netflix
+      - Watch YouTube
+      - Watch TV
+      - Play Xbox One
+      - Play Xbox 360
+    icon: mdi:monitor
+
+  harmony_power:
+    name: Device Power
+    options:
+      - Select Device
+      - Living Room TV
+      - Living Room Speakers
+      - Android TV
+      - Fios DVR
+      - Xbox One
+      - Xbox 360
+    icon: mdi:power
+
+sensor:
+  - platform: template
+    sensors:
+      current_activity:
+        friendly_name: 'Current Activity'
+        value_template: '{{ states.remote.living_room.attributes.current_activity }}'
+
+
+#-------------------------------------------
+
+group:
+  harmony:
+    name: Entertainment
+    view: no
+    entities:
+      - remote.living_room
+      - sensor.current_activity
+      - input_select.harmony
+      - input_select.harmony_power
+
+#-------------------------------------------
+
+automation:
+  - alias: Harmony Activity
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony
+      from: 'Select Activity'
+
+    action:
+      - service: remote.turn_on
+        entity_id: remote.living_room
+        data_template:
+          activity: >
+            {% if is_state("input_select.harmony", "Watch Movies") %}
+              27328018
+            {% elif is_state("input_select.harmony", "Watch Netflix") %}
+              27328946
+            {% elif is_state("input_select.harmony", "Watch YouTube") %}
+              27329162
+            {% elif is_state("input_select.harmony", "Watch TV") %}
+              27326898
+            {% elif is_state("input_select.harmony", "Play Xbox One") %}
+              27326936
+            {% elif is_state("input_select.harmony", "Play Xbox 360") %}
+              27326976
+            {% else %}
+            {% endif %}
+      - service: input_select.select_option
+        entity_id: input_select.harmony
+        data_template:
+          option: "Select Activity"
+
+  - alias: Living Room TV Power Toggle
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony_power
+      to: 'Living Room TV'
+    action:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: "46085815"
+          command: "PowerToggle"
+      - service: input_select.select_option
+        entity_id: input_select.harmony_power
+        data_template:
+          option: "Select Device"
+
+  - alias: Living Room Speakers Power Toggle
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony_power
+      to: 'Living Room Speakers'
+    action:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: "46085817"
+          command: "PowerToggle"
+      - service: input_select.select_option
+        entity_id: input_select.harmony_power
+        data_template:
+          option: "Select Device"
+
+  - alias: Android TV Power Toggle
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony_power
+      to: 'Android TV'
+    action:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: "46085820"
+          command: "PowerToggle"
+      - service: input_select.select_option
+        entity_id: input_select.harmony_power
+        data_template:
+          option: "Select Device"
+
+  - alias: FIOS DVR Power Toggle
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony_power
+      to: 'FIOS DVR'
+    action:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: "46085818"
+          command: "PowerToggle"
+      - service: input_select.select_option
+        entity_id: input_select.harmony_power
+        data_template:
+          option: "Select Device"
+
+  - alias: Xbox One Power Toggle
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony_power
+      to: 'Xbox One'
+    action:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: "46085814"
+          command: "PowerToggle"
+      - service: input_select.select_option
+        entity_id: input_select.harmony_power
+        data_template:
+          option: "Select Device"
+
+  - alias: Xbox Power Toggle
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony_power
+      to: 'Xbox 360'
+    action:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: "46085819"
+          command: "PowerToggle"
+      - service: input_select.select_option
+        entity_id: input_select.harmony_power
+        data_template:
+          option: "Select Device"
+
+  - alias: Harmony Off
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: remote.living_room
+      to: 'off'
+    action:
+      - service: remote.turn_off
+        entity_id: remote.living_room
+      - service: input_select.select_option
+        entity_id: input_select.harmony
+        data_template:
+          option: "Select Activity"

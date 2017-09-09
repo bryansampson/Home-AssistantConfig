@@ -1,0 +1,30 @@
+- platform: template
+  sensors:
+    bryan:
+      value_template: '{{ states.device_tracker.bryan_cell.state }}'
+      friendly_name: 'Bryan'
+
+    rosa:
+      value_template: '{{ states.device_tracker.rosa_cell.state }}'
+      friendly_name: 'Rosa'
+
+    carl:
+      value_template: '{{ states.device_tracker.carl_cell.state }}'
+      friendly_name: 'Carl'
+
+    philip:
+      value_template: '{{ states.device_tracker.philip_cell.state }}'
+      friendly_name: 'Philip'
+
+    adam:
+      value_template: '{{ states.device_tracker.adam_cell.state }}'
+      friendly_name: 'Adam'
+
+    ruby:
+      value_template: '{{ states.device_tracker.ruby.state }}'
+      friendly_name: 'Ruby'
+
+    obi:
+      value_template: '{{ states.device_tracker.obi.state }}'
+      friendly_name: 'Obi'
+

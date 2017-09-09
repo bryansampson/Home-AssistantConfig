@@ -1,0 +1,124 @@
+sensor:
+  - platform: template
+    sensors:
+      linksys_router:
+        friendly_name: 'Linksys Router'
+        value_template: "{{ 'Online' if is_state('device_linksys_router', 'home') else 'Offline' }}"
+
+      vmhost01:
+        friendly_name: 'VMHost01'
+        value_template: "{{ 'Online' if is_state('device_tracker.vmhost01', 'home') else 'Offline' }}"
+
+      vsphere01:
+        friendly_name: 'HRWS-VCS01'
+        value_template: "{{ 'Online' if is_state('device_tracker.vsphere01', 'home') else 'Offline' }}"
+
+      hp_printer:
+        friendly_name: 'HP Printer'
+        value_template: "{{ 'Online' if is_state('device_tracker.hp_printer', 'home') else 'Offline' }}"
+
+      fios_router:
+        friendly_name: 'FIOS Gateway Router'
+        value_template: "{{ 'Online' if is_state('device_tracker.fios_router', 'home') else 'Offline' }}"
+
+      hr_ad01:
+        friendly_name: 'HR-AD01'
+        value_template: "{{ 'Online' if is_state('device_tracker.hr_ad01', 'home') else 'Offline' }}"
+
+      hrws_ad01:
+        friendly_name: 'HRWS-AD01'
+        value_template: "{{ 'Online' if is_state('device_tracker.hrws_ad01', 'home') else 'Offline' }}"
+
+      hrws_family:
+        friendly_name: 'HRWS-Family'
+        value_template: "{{ 'Online' if is_state('device_tracker.hrws_family', 'home') else 'Offline' }}"
+
+      hrws_mail:
+        friendly_name: 'HRWS-Mail'
+        value_template: "{{ 'Online' if is_state('device_tracker.hrws_mail', 'home') else 'Offline' }}"
+
+      hrws_qnap:
+        friendly_name: 'HRWS-QNAP'
+        value_template: "{{ 'Online' if is_state('device_tracker.hrws_qnap', 'home') else 'Offline' }}"
+
+      dlink_camera:
+        friendly_name: 'D-Link Camera'
+        value_template: "{{ 'Online' if is_state('device_tracker.dlink_camera', 'home') else 'Offline' }}"
+
+      hrws_home:
+        friendly_name: 'HRWS-Home'
+        value_template: "{{ 'Online' if is_state('device_tracker.hrws_home', 'home') else 'Offline' }}"
+
+      hrws_media:
+        friendly_name: 'HRWS-Media'
+        value_template: "{{ 'Online' if is_state('device_tracker.hrws_media', 'home') else 'Offline' }}"
+
+      hrws_nas01:
+        friendly_name: 'HRWS-NAS01'
+        value_template: "{{ 'Online' if is_state('device_tracker.hrws_nas01', 'home') else 'Offline' }}"
+
+      kodi_pi:
+        friendly_name: 'Kodi Pi'
+        value_template: "{{ 'Online' if is_state('device_tracker.kodi_pi', 'home') else 'Offline' }}"
+
+#-------------------------------------------
+group:
+  network:
+   name: Network Devices
+   entities:
+      - sensor.ha_installed_version
+      - sensor.ha_uptime
+      - sensor.since_last_boot_templated
+      - sensor.disk_use_
+      - sensor.linksys_router
+      - sensor.vmhost01
+      - sensor.vsphere01
+      - sensor.hrws_qnap
+      - sensor.hrws_home
+      - sensor.hrws_media
+      - sensor.hrws_nas01
+      - sensor.hrws_family
+      - sensor.dlink_camera
+      - sensor.hrws_mail
+      - sensor.hr_ad01
+      - sensor.hrws_ad01
+      - sensor.kodi_pi
+      - sensor.fios_router
+      - sensor.hp_printer
+
+#-------------------------------------------
+automation:
+  - alias: 'Device Status'
+    hide_entity: True
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.linksys_router
+          - sensor.vmhost01
+          - sensor.vsphere01
+          - sensor.hrws_qnap
+          - sensor.hrws_home
+          - sensor.hrws_media
+          - sensor.hrws_nas01
+          - sensor.hrws_family
+          - sensor.dlink_camera
+          - sensor.hrws_mail
+          - sensor.hr_ad01
+          - sensor.hrws_ad01
+          - sensor.fios_router
+          - sensor.hp_printer
+        to: 'offline'
+        for:
+          minutes: 5
+
+    action:
+      - service: script.ifttt_notify
+        data_template:
+          value1: 'Device Status:'
+          value2: "{{ trigger.to_state.attributes.friendly_name }} is "
+          value3: "{{ trigger.to_state.state }}"
+
+      - service: script.speech_engine
+        data_template:
+          value1: "{{ trigger.to_state.attributes.friendly_name }} is now {{ trigger.to_state.state }}"
+

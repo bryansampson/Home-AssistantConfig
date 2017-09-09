@@ -1,0 +1,4 @@
+console:
+  title: 'Console'
+  icon: mdi:console
+  url: !secret hass_console_url

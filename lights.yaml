@@ -1,0 +1,23 @@
+- platform: hue
+
+- platform: mqtt
+  name: dining_room
+  state_topic: "smartthings/Dining Room Light/switch/state"
+  command_topic: "smartthings/Dining Room Light/switch/state"
+  brightness_state_topic: "smartthings/Dining Room Light/level/state"
+  brightness_command_topic: "smartthings/Dining Room Light/level/state"
+  brightness_scale: 99
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: kitchen
+  state_topic: "smartthings/Kitchen Lights/switch/state"
+  command_topic: "smartthings/Kitchen Lights/switch/state"
+  brightness_state_topic: "smartthings/Kitchen Lights/level/state"
+  brightness_command_topic: "smartthings/Kitchen Lights/level/state"
+  brightness_scale: 99
+  payload_on: "on"
+  payload_off: "off"
+  retain: true

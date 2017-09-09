@@ -1,0 +1,106 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret time_zone
+
+  customize_glob:
+    lights.*:
+      custom_ui_state_card: state-card-custom-ui  
+#        state_card_mode: single-line
+#        hide_control: false
+
+#  group.family:
+#    state_card_mode: badges
+
+  customize: !include customize.yaml
+
+  packages: !include_dir_named packages
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret api_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  base_url: !secret hass_base_url
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_priv_key
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+recorder:
+  db_url: !secret db_url
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+customizer:
+  panel: true
+  hide_customui_attributes: false
+  hide_attributes:
+    - node_id
+    - value_index
+
+light: !include lights.yaml
+
+remote: !include remotes.yaml
+
+media_player: !include media_players.yaml
+
+# Nest Thermostat
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+
+# ifttt Config
+ifttt:
+  key: !secret ifttt_key
+
+mqtt: !include mqtt.yaml
+device_tracker: !include device_tracker.yaml
+camera: !include cameras.yaml
+sensor: !include_dir_merge_list sensors
+input_slider: !include input_sliders.yaml
+input_select: !include input_selects.yaml
+panel_iframe: !include panel_iframes.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+scene: !include_dir_list scenes
+script: !include scripts.yaml

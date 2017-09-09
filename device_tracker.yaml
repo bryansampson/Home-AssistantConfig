@@ -1,0 +1,29 @@
+- platform: ddwrt
+  host: !secret dd_wrt_host
+  username: !secret dd_wrt_username
+  password: !secret dd_wrt_password
+  interval_seconds: 10
+  consider_home: 180
+  track_new_devices: yes
+
+- platform: ping
+  hosts:
+    linksys_router: !secret linksys_router_ip
+    vmhost01: !secret vmhost01_ip
+    vsphere01: !secret vsphere01_ip
+    hp_printer: !secret hp_printer_ip
+    hr_ad01: !secret hr_ad01_ip
+    hrws_ad01: !secret hrws_ad01_ip
+    hrws_family: !secret hrws_family_ip
+    hrws_mail: !secret hrws_mail_ip
+    kodi_pi: !secret kodi_pi_ip
+    hrws_qnap: !secret hrws_qnap_ip
+    dlink_camera: !secret dlink_camera_ip
+    hrws_home: !secret hrws_home_ip
+    hrws_media: !secret hrws_media_ip
+    hrws_nas01: !secret hrws_nas01_ip
+    fios_router: !secret fios_router_ip
+
+- platform: owntracks
+  max_gps_accuracy: 200
+  waypoints: True

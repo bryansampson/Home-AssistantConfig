@@ -1,0 +1,13 @@
+# Kodi
+- platform: kodi
+  host: !secret kodi_host
+  username: !secret kodi_username
+  password: !secret kodi_password
+
+# ChromeCast
+- platform: cast
+
+# Spotify
+- platform: spotify
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret

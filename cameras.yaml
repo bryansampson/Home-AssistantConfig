@@ -1,0 +1,7 @@
+- platform: mjpeg
+  name: living_room_camera
+  friendly_name: Living Room Camera
+  mjpeg_url: !secret camera_mjpeg_url
+  still_image_url: !secret camera_still_image_url
+  username: !secret camera_username
+  password: !secret camera_password

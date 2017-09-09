@@ -1,0 +1,196 @@
+- name: Living Room Living Room Savanna Sunset
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 203
+      color_temp: 500
+      rgb_color: 255,158,80
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 203
+      color_temp: 379
+      rgb_color: 255,219,83
+
+#-------------------------------------------
+
+- name: Living Room Tropical Twilight
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 112
+      color_temp: 399
+      rgb_color: 221,157,106
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 112
+      color_temp: 153
+      rgb_color: 194,162,242
+
+#-------------------------------------------
+
+- name: Living Room Arctic Aroura
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 142
+      color_temp: 153
+      rgb_color: 72,226,191
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 142
+      color_temp: 153
+      rgb_color: 150,213,179
+
+#-------------------------------------------
+
+- name: Living Room Spring Blossom
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 216
+      color_temp: 340
+      rgb_color: 255,150,183
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 216
+      color_temp: 195
+      rgb_color: 253,229,239
+
+#-------------------------------------------
+
+- name: Living Room Relax
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 144
+      color_temp: 443
+      rgb_color: 243,179,80
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 144
+      color_temp: 443
+      rgb_color: 243,179,80
+
+#-------------------------------------------
+
+- name: Living Room Read
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 254
+      color_temp: 343
+      rgb_color: 255,211,130
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 254
+      color_temp: 343
+      rgb_color: 255,211,130
+
+#-------------------------------------------
+
+- name: Living Room Concentrate
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 254
+      color_temp: 230
+      rgb_color: 255,241,199
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 254
+      color_temp: 230
+      rgb_color: 255,241,199
+
+#-------------------------------------------
+
+- name: Living Room Energize
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 254
+      color_temp: 156
+      rgb_color: 246,255,254
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 254
+      color_temp: 156
+      rgb_color: 246,255,254
+
+#-------------------------------------------
+
+- name: Living Room Bright
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 254
+      color_temp: 366
+      rgb_color: 255,207,120
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 254
+      color_temp: 366
+      rgb_color: 255,207,120
+
+#-------------------------------------------
+
+- name: Living Room Dimmed
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 77
+      color_temp: 366
+      rgb_color: 174,140,79
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 77
+      color_temp: 366
+      rgb_color: 174,140,79
+
+#-------------------------------------------
+
+- name: Living Room Nightlight
+  entities:
+    light.living_room_1:
+      state: on
+      transition: 2
+      brightness: 1
+      color_temp: 500
+      rgb_color: 21,8,0
+
+    light.living_room_2:
+      state: on
+      transition: 2
+      brightness: 1
+      color_temp: 500
+      rgb_color: 21,8,0
+

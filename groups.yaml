@@ -1,0 +1,129 @@
+default_view:
+  view: yes
+  icon: mdi:home 
+  entities:
+    - group.living_room
+    - group.bedroom
+    - group.dining_room_kitchen
+    - group.climate
+    - group.family
+    - group.harmony
+
+living_room:
+  name: Living Room
+  view: no
+  entities:
+   - light.living_room
+   - input_select.living_room_mood
+   - light.living_room_1
+   - light.living_room_2
+
+bedroom:
+  name: Bedroom
+  view: no
+  entities:
+   - light.bedroom
+   - input_select.bedroom_mood
+   - light.bryans_reading_lamp
+   - light.rosas_reading_lamp
+   
+dining_room_kitchen:
+  name: "Dining Room / Kitchen"
+  view: no
+  entities:
+   - light.dining_room
+   - light.kitchen
+
+climate:
+  name: Climate Control
+  view: no
+  entities:
+    - climate.hallway
+    - binary_sensor.hallway_thermostat_has_leaf
+    - sensor.day_night
+    - sensor.pws_weather
+    - sensor.pws_temperature_string
+
+family:
+  name: Family
+  view: no
+  icon: mdi:account-multiple
+  entities:
+    - sensor.bryan
+    - sensor.rosa
+    - sensor.carl
+    - sensor.philip
+    - sensor.adam
+    - sensor.ruby
+    - sensor.obi
+
+weather_view:
+  name: Weather Conditions
+  view: yes
+  icon: mdi:weather-sunny
+  entities:
+    - group.weather
+    - group.forcast
+
+weather:
+  name: Current Weather
+  view: no
+  entities:
+    - sensor.pws_weather
+    - sensor.pws_temperature_string
+    - sensor.pws_feelslike_string
+    - sensor.pws_temp_high_1d_f
+    - sensor.pws_temp_low_1d_f
+    - sensor.pws_temp_high_record_f
+    - sensor.pws_temp_low_record_f
+    - sensor.pws_wind_string
+    - sensor.pws_relative_humidity
+    - sensor.pws_dewpoint_f
+    - sensor.pws_precip_today_string
+    - sensor.pws_precip_1d
+    - sensor.pws_observation_time
+    - sensor.pws_alerts
+
+forcast:
+  name: Weather Forecast
+  view: no
+  entities:
+    - sensor.pws_weather_1n
+    - sensor.pws_weather_2d
+    - sensor.pws_weather_3d
+    - sensor.pws_weather_4d
+
+media:
+  name: Media
+  view: yes
+  icon: mdi:music
+  entities:
+    - remote.harmony
+    - media_player.kodi
+    - media_player.living_room_home
+    - media_player.spotify
+
+camera:
+  name: Camera
+  view: yes
+  icon: mdi:webcam
+  entities:
+    - camera.living_room_camera
+
+network_view:
+  name: Network
+  view: yes
+  icon: mdi:network
+  entities:
+    - group.network
+    - group.internet
+
+internet:
+  name: Internet
+  view: no
+  entities:
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.fastcom_download
+
