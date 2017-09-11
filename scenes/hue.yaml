@@ -146,14 +146,14 @@
   entities:
     light.living_room_1:
       state: on
-      transition: 2
+      transition: 5
       brightness: 254
       color_temp: 366
       rgb_color: 255,207,120
 
     light.living_room_2:
       state: on
-      transition: 2
+      transition: 5
       brightness: 254
       color_temp: 366
       rgb_color: 255,207,120
@@ -164,14 +164,14 @@
   entities:
     light.living_room_1:
       state: on
-      transition: 2
+      transition: 5
       brightness: 77
       color_temp: 366
       rgb_color: 174,140,79
 
     light.living_room_2:
       state: on
-      transition: 2
+      transition: 5
       brightness: 77
       color_temp: 366
       rgb_color: 174,140,79
@@ -193,4 +193,22 @@
       brightness: 1
       color_temp: 500
       rgb_color: 21,8,0
+
+#-------------------------------------------
+
+- name: bedroom_dimmed
+  entities:
+    light.bryans_reading_lamp:
+      state: on
+      transition: 5
+      brightness: 77
+      color_temp: 366
+      rgb_color: 174,140,79
+
+    light.rosas_reading_lamp:
+     state: on
+     transition: 5
+     brightness: 77
+     color_temp: 366
+     rgb_color: 174,140,79
 

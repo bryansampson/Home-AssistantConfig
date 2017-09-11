@@ -40,3 +40,22 @@
     entity_id: input_select.bedroom_mood
     data_template:
       option: Select Mood
+
+- id: '2'
+  alias: 'Evening Lighting - Bedroom'  
+  trigger:
+    platform: time
+    at: '10:10:00'
+  condition:
+    condition: state
+    entity_id: group.bedroom
+    state: "off"
+  action:    
+    service: light.hue_activate_scene
+    data_template:
+      group_name: Bedroom
+      scene_name: 'Dimmed'
+
+#     service: scene.turn_on
+#     entity_id: scene.bedroom_dimmed
+

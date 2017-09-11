@@ -72,8 +72,7 @@ logbook:
 sun:
 
 customizer:
-  panel: true
-  hide_customui_attributes: false
+  custom_ui: local
   hide_attributes:
     - node_id
     - value_index
