@@ -1,3 +1,55 @@
+homeassistant:
+  customize:
+    sensor.linksys_router:
+      icon: mdi:wan
+
+    sensor.vmhost01:
+      icon: mdi:server-network
+
+    sensor.vsphere01:
+      icon: mdi:server-network
+
+    sensor.hrws_qnap:
+      icon: mdi:server-network
+
+    sensor.hrws_home:
+      icon: mdi:server-network
+
+    sensor.hrws_media:
+      icon: mdi:server-network
+
+    sensor.hrws_nas01:
+      icon: mdi:harddisk
+
+    sensor.hrws_family:
+      icon: mdi:server-network
+
+    sensor.dlink_camera:
+      icon: mdi:webcam
+
+    sensor.hrws_mail:
+      icon: mdi:server-network
+
+    sensor.hr_ad01:
+      icon: mdi:server-network
+
+    sensor.hrws_ad01:
+      icon: mdi:server-network
+
+    sensor.kodi_pi:
+      icon: mdi:raspberrypi
+
+    sensor.fios_router:
+      icon: mdi:network
+
+    sensor.hp_printer:
+      icon: mdi:printer
+
+    sensor.fastcom_download:
+      icon: mdi:speedometer
+
+#-------------------------------------------
+
 sensor:
   - platform: template
     sensors:
@@ -62,6 +114,7 @@ sensor:
         value_template: "{{ 'Online' if is_state('device_tracker.kodi_pi', 'home') else 'Offline' }}"
 
 #-------------------------------------------
+
 group:
   network:
    name: Network Devices
@@ -87,6 +140,7 @@ group:
       - sensor.hp_printer
 
 #-------------------------------------------
+
 automation:
   - alias: 'Device Status'
     hide_entity: True

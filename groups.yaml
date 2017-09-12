@@ -49,13 +49,14 @@ family:
   view: no
   icon: mdi:account-multiple
   entities:
-    - sensor.bryan
-    - sensor.rosa
-    - sensor.carl
-    - sensor.philip
-    - sensor.adam
-    - sensor.ruby
-    - sensor.obi
+    - device_tracker.bryan_cell
+    - device_tracker.rosa_cell
+    - device_tracker.carl_cell
+    - device_tracker.philip_cell
+    - device_tracker.adam_cell
+    - device_tracker.ruby
+    - device_tracker.obi
+
 
 weather_view:
   name: Weather Conditions

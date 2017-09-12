@@ -13,13 +13,16 @@ homeassistant:
 
   customize_glob:
     lights.*:
-      custom_ui_state_card: state-card-custom-ui  
-#        state_card_mode: single-line
-#        hide_control: false
+      custom_ui_state_card: state-card-custom-ui
+      state_card_mode: break-slider
+      stretch_slider: true
+      hide_control: false
 
-#  group.family:
-#    state_card_mode: badges
+    group.family:
+      custom_ui_state_card: state-card-custom-ui
+      state_card_mode: badges
 
+# Customization file
   customize: !include customize.yaml
 
   packages: !include_dir_named packages
@@ -29,6 +32,8 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  extra_html_url:
+    - /local/custom_ui/state-card-custom-ui.html
 
 # Enables configuration UI
 config:
@@ -42,7 +47,6 @@ http:
   ssl_key: !secret ssl_priv_key
   ip_ban_enabled: True
   login_attempts_threshold: 5
-
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -71,11 +75,9 @@ logbook:
 # Track the sun
 sun:
 
-customizer:
-  custom_ui: local
-  hide_attributes:
-    - node_id
-    - value_index
+# Text to speech
+tts:
+  - platform: google
 
 light: !include lights.yaml
 

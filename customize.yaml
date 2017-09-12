@@ -1,88 +1,16 @@
 climate.hallway:
   friendly_name: Nest Thermostat
-  entity_picture: /local/nest.png
+  entity_picture: /local/images/nest.png
 
 remote.living_room:
   friendly_name: Harmony Remote
-  entity_picture: /local/harmony.png
+  entity_picture: /local/images/harmony.png
 
 sensor.current_activity:
   icon: mdi:play
 
-switch.living_room_tv:
-  friendly_name: Living Room TV
-  icon: mdi:monitor
-
-switch.living_room_speakers:
-  friendly_name: Living Room Speakers
-  icon: mdi:speaker
-
-switch.living_room_androidtv:
-  friendly_name: Living Room AndroidTV
-  icon: mdi:android
-
-switch.living_room_dvr:
-  friendly_name: Living Room STB
-  icon: mdi:server
-
-switch.xbox_one:
-  friendly_name: Xbox One
-  icon: mdi:xbox
-
-switch.xbox:
-  friendly_name: Xbox
-  icon: mdi:xbox
-
 camera.living_room_camera:
   friendly_name: Living Room Camera
-
-sensor.linksys_router:
-  icon: mdi:wan
-
-sensor.vmhost01:
-  icon: mdi:server-network
-
-sensor.vsphere01:
-  icon: mdi:server-network
-
-sensor.hrws_qnap:
-  icon: mdi:server-network
-
-sensor.hrws_home:
-  icon: mdi:server-network
-
-sensor.hrws_media:
-  icon: mdi:server-network
-
-sensor.hrws_nas01:
-  icon: mdi:harddisk
-
-sensor.hrws_family:
-  icon: mdi:server-network
-
-sensor.dlink_camera:
-  icon: mdi:webcam
-
-sensor.hrws_mail:
-  icon: mdi:server-network
-
-sensor.hr_ad01:
-  icon: mdi:server-network
-
-sensor.hrws_ad01:
-  icon: mdi:server-network
-
-sensor.kodi_pi:
-  icon: mdi:raspberrypi
-
-sensor.fios_router:
-  icon: mdi:network
-
-sensor.hp_printer:
-  icon: mdi:printer
-
-sensor.fastcom_download:
-  icon: mdi:speedometer
 
 light.dining_room:
   friendly_name: "Dining Room Lights"
@@ -92,46 +20,47 @@ light.kitchen:
   friendly_name: "Kitchen Lights"
   state_card_mode: no-slider
 
-input_slider.brightness_dr:
-  icon: mdi:brightness-5
-
-input_slider.brightness_kt:
-  icon: mdi:brightness-5
-
 #------------------------------------------------------
 
-sensor.bryan:
-  custom_ui_state_card: custom-ui
+device_tracker.bryan_cell:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges
   friendly_name: 'Bryan'
-  entity_picture: /local/bryan.jpg
+  entity_picture: /local/images/bryan.jpg
 
-sensor.rosa:
-  custom_ui_state_card: custom-ui
+device_tracker.rosa_cell:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges
   friendly_name: 'Rosa'
-  entity_picture: /local/rosa.jpg
+  entity_picture: /local/images/rosa.jpg
 
-sensor.carl:
-  custom_ui_state_card: custom-ui
+device_tracker.carl_cell:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges
   friendly_name: 'Carl'
-  entity_picture: /local/carl.jpg
+  entity_picture: /local/images/carl.jpg
 
-sensor.philip:
-  custom_ui_state_card: custom-ui
+device_tracker.philip_cell:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges
   friendly_name: 'Philip'
-  entity_picture: /local/philip.jpg
+  entity_picture: /local/images/philip.jpg
 
-sensor.adam:
-  custom_ui_state_card: custom-ui
+device_tracker.adam_cell:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges
   friendly_name: 'Adam'
-  entity_picture: /local/adam.jpg
+  entity_picture: /local/images/adam.jpg
 
-sensor.ruby:
-  custom_ui_state_card: custom-ui
+device_tracker.ruby:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges
   friendly_name: 'Ruby'
-  entity_picture: /local/ruby.jpg
+  entity_picture: /local/images/ruby.jpg
 
-sensor.obi:
-  custom_ui_state_card: custom-ui
+device_tracker.obi:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges
   friendly_name: 'Obi'
-  entity_picture: /local/obi.jpg
+  entity_picture: /local/images/obi.jpg
 
