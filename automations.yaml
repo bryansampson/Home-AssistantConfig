@@ -1,61 +1,170 @@
 - id: '1'
-  alias: Startup Notification
+  alias: HASS Startup Notification
   trigger:
-    platform: homeassistant
-    event: start
+    - platform: homeassistant
+      event: start
   action:
-    service: ifttt.trigger
-    data:
-      event: HA_Startup
-      value1: Home Assistant Startup
-
-- id: '1504843384907'
-  alias: Activate Living Room Hue Scene
-  trigger:
-    platform: state
-    entity_id: input_select.living_room_mood
-    from: Select Mood
-  action:
-  - service: light.hue_activate_scene
-    data_template:
-      group_name: Living Room
-      scene_name: '{{ trigger.to_state.state }}'
-  - service: input_select.select_option
-    entity_id: input_select.living_room_mood
-    data_template:
-      option: Select Mood
-
-- id: '1504850140660'
-  alias: Activate Bedroom Hue Scene
-  trigger:
-    platform: state
-    entity_id: input_select.bedroom_mood
-    from: Select Mood
-  action:
-  - service: light.hue_activate_scene
-    data_template:
-      group_name: Bedroom
-      scene_name: '{{ trigger.to_state.state }}'
-  - service: input_select.select_option
-    entity_id: input_select.bedroom_mood
-    data_template:
-      option: Select Mood
+    - service: shell_command.hass_startup_command
 
 - id: '2'
-  alias: 'Evening Lighting - Bedroom'  
+  alias: Bedroom - Evening Lighting
   trigger:
-    platform: time
-    at: '10:10:00'
+    - platform: time
+      at: '20:00:00'
   condition:
-    condition: state
-    entity_id: group.bedroom
-    state: "off"
-  action:    
-    service: light.hue_activate_scene
-    data_template:
-      group_name: Bedroom
-      scene_name: 'Dimmed'
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.bedroom_lights
+        state: 'off'
+      - condition: state
+        entity_id: switch.disable_light_automations
+        state: 'off'
+  action:
+    - service: light.hue_activate_scene
+      data_template:
+        group_name: Bedroom
+        scene_name: Dimmed
 
-#     service: scene.turn_on
-#     entity_id: scene.bedroom_dimmed
+- id: '3'
+  alias: Bedroom - Nightime Lighting
+  trigger:
+    - platform: time
+      at: '23:00:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.bedroom_lights
+        state: 'off'
+      - condition: state
+        entity_id: switch.disable_light_automations
+        state: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: group.bedroom
 
+- id: '4'
+  alias: Living Room - Evening Lighting
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: -01:00:00
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.living_room_lights
+        state: 'off'
+      - condition: state
+        entity_id: switch.disable_light_automations
+        state: 'off'
+  action:
+    - service: light.hue_activate_scene
+      data_template:
+        group_name: Living Room
+        scene_name: Bright
+
+- id: '5'
+  alias: Living Room - Bedtime Lighting
+  trigger:
+    - platform: time
+      at: '22:00:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.living_room_lights
+        state: 'off'
+      - condition: state
+        entity_id: switch.disable_light_automations
+        state: 'off'
+  action:
+    - service: light.hue_activate_scene
+      data_template:
+        group_name: Living Room
+        scene_name: Dimmed
+
+- id: '6'
+  alias: Living Room - Nightime Lighting
+  trigger:
+    - platform: time
+      at: '01:00:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.living_room_lights
+        state: 'on'
+      - condition: state
+        entity_id: switch.disable_light_automations
+        state: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: group.living_room_lights
+
+- id: '1504843384907'
+  alias: Living Room - Activate Hue Scene
+  trigger:
+    - platform: state
+      entity_id: input_select.living_room_mood
+  condition:
+    condition: template
+    value_template: '{% if not is_state("input_select.living_room_mood", "Powered Off") %}true{% endif %}'
+  action:
+    - service: light.hue_activate_scene
+      data_template:
+        group_name: Living Room
+        scene_name: '{{ trigger.to_state.state }}'
+
+- id: '1504850140660'
+  alias: Bedoom - Activate Hue Scene
+  trigger:
+    - platform: state
+      entity_id: input_select.bedroom_mood
+  condition:
+    condition: template
+    value_template: '{% if not is_state("input_select.bedroom_mood", "Powered Off") %}true{% endif %}'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.bedroom_dimmed
+    - service: light.hue_activate_scene
+      data_template:
+        group_name: Bedroom
+        scene_name: '{{ trigger.to_state.state }}'
+
+- id: '1506211563574'
+  alias: Living Room Lights Turned Off
+  trigger:
+    - platform: state
+      entity_id: group.living_room_lights
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: input_select.living_room_mood
+      to: 'Powered Off'
+  action:
+    - service: light.turn_off
+      entity_id: group.living_room_lights
+    - service: input_select.select_option
+      entity_id: input_select.living_room_mood
+      data_template:
+        option: 'Powered Off'
+
+- id: '1506211563108'
+  alias: Bedoom Lights Turned Off
+  trigger:
+    - platform: state
+      entity_id: group.bedroom_lights
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: input_select.bedroom_mood
+      to: 'Powered Off'
+  action:
+    - service: light.turn_off
+      entity_id: group.bedroom_lights
+    - service: input_select.select_option
+      entity_id: input_select.bedroom_mood
+      data_template:
+        option: 'Powered Off'

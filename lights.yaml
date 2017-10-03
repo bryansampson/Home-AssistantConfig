@@ -4,8 +4,8 @@
   name: dining_room
   state_topic: "smartthings/Dining Room Light/switch/state"
   command_topic: "smartthings/Dining Room Light/switch/state"
-  brightness_state_topic: "smartthings/Dining Room Light/level/state"
-  brightness_command_topic: "smartthings/Dining Room Light/level/state"
+  brightness_state_topic: "smartthings/Dining Room Light/level"
+  brightness_command_topic: "smartthings/Dining Room Light/level"
   brightness_scale: 99
   payload_on: "on"
   payload_off: "off"
@@ -15,8 +15,8 @@
   name: kitchen
   state_topic: "smartthings/Kitchen Lights/switch/state"
   command_topic: "smartthings/Kitchen Lights/switch/state"
-  brightness_state_topic: "smartthings/Kitchen Lights/level/state"
-  brightness_command_topic: "smartthings/Kitchen Lights/level/state"
+  brightness_state_topic: "smartthings/Kitchen Lights/level"
+  brightness_command_topic: "smartthings/Kitchen Lights/level"
   brightness_scale: 99
   payload_on: "on"
   payload_off: "off"

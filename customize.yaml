@@ -1,3 +1,52 @@
+sensor.bryan_phone:
+  friendly_name: "Bryan's Phone"
+  custom_ui_state_card: state-card-custom-ui
+  extra_badge:
+    attribute: battery_level
+    blacklist_states: 100
+    unit: '%'
+  show_last_changed: true
+
+sensor.bryan_tablet:
+  custom_ui_state_card: state-card-custom-ui
+  extra_badge:
+    attribute: battery_level
+    blacklist_states: 100
+    unit: '%'
+  show_last_changed: true
+
+script.living_room_amp_volume_up:
+  friendly_name: Amp Volume Up
+  icon: mdi:volume-plus
+
+script.living_room_amp_volume_down:
+  friendly_name: Amp Volume Down
+  icon: mdi:volume-minus
+
+script.living_room_amp_mute:
+  friendly_name: Amp Mute
+  icon: mdi:volume-off
+
+script.living_room_kodi_volume_up:
+  friendly_name: Kodi Volume Up
+  icon: mdi:volume-plus
+
+script.living_room_kodi_volume_down:
+  friendly_name: Kodi Volume Down
+  icon: mdi:volume-minus
+
+script.living_room_kodi_mute:
+  friendly_name: Kodi Mute
+  icon: mdi:volume-off
+
+switch.disable_light_automations:
+  icon: mdi:brightness-auto
+  confirm_controls_show_lock: true
+
+switch.enable_vacation_mode:
+  icon: mdi:beach
+  confirm_controls_show_lock: true
+
 climate.hallway:
   friendly_name: Nest Thermostat
   entity_picture: /local/images/nest.png
@@ -9,58 +58,105 @@ remote.living_room:
 sensor.current_activity:
   icon: mdi:play
 
+input_slider.living_room_amp_slider:
+  icon: mdi:volume-high
+
+input_slider.living_room_kodi_slider:
+  icon: mdi:volume-high
+
 camera.living_room_camera:
   friendly_name: Living Room Camera
 
+camera.bryan_phone_location:
+  friendly_name: Location of Bryan's Phone
+
+camera.caltech_eq_map:
+  friendly_name: '.'
+
 light.dining_room:
-  friendly_name: "Dining Room Lights"
+  friendly_name: Dining Room Lights
   state_card_mode: no-slider
 
 light.kitchen:
-  friendly_name: "Kitchen Lights"
+  friendly_name: Kitchen Lights
   state_card_mode: no-slider
-
-#------------------------------------------------------
 
 device_tracker.bryan_cell:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-  friendly_name: 'Bryan'
+  friendly_name: Bryan
   entity_picture: /local/images/bryan.jpg
 
 device_tracker.rosa_cell:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-  friendly_name: 'Rosa'
+  friendly_name: Rosa
   entity_picture: /local/images/rosa.jpg
 
 device_tracker.carl_cell:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-  friendly_name: 'Carl'
+  friendly_name: Carl
   entity_picture: /local/images/carl.jpg
 
 device_tracker.philip_cell:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-  friendly_name: 'Philip'
+  friendly_name: Philip
   entity_picture: /local/images/philip.jpg
 
 device_tracker.adam_cell:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-  friendly_name: 'Adam'
+  friendly_name: Adam
   entity_picture: /local/images/adam.jpg
+
 
 device_tracker.ruby:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-  friendly_name: 'Ruby'
+  friendly_name: Ruby
   entity_picture: /local/images/ruby.jpg
 
 device_tracker.obi:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-  friendly_name: 'Obi'
+  friendly_name: Obi
   entity_picture: /local/images/obi.jpg
+
+device_tracker.001dd82bc92c: {}
+
+sensor.hrwsqnap_name:
+  icon: /local/images/nas.png
+
+sensor.hrwsqnap_cpu_temperature:
+  friendly_name: CPU Temperature
+
+sensor.hrwsqnap_system_temperature:
+  friendly_name: System Temperature
+
+sensor.hrwsqnap_status:
+  friendly_name: System Status
+
+sensor.hrwsqnap_cpu_usage:
+  friendly_name: CPU Usage
+
+sensor.hrwsqnap_used_space_datavol1:
+  friendly_name: Used Space
+
+sensor.hrwsqnap_volume_used_datavol1:
+  friendly_name: Used Space
+
+sensor.hrwsqnap_free_space_datavol1:
+  friendly_name: Free Space
+
+sensor.hrwsqnap_memory_usage:
+  friendly_name: Memory Usage
+
+sensor.hrwsqnap_network_up_eth0:
+  friendly_name: 'Network Upload (eth0)'
+  
+sensor.hrwsqnap_network_down_eth0:
+  friendly_name: 'Network Download (eth0)'
+
 

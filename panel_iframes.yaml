@@ -2,3 +2,8 @@ console:
   title: 'Console'
   icon: mdi:console
   url: !secret hass_console_url
+
+mdiindex:
+  title: MDI Icon Index
+  icon: mdi:vector-square
+  url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html

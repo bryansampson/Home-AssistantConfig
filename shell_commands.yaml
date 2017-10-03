@@ -1,0 +1,1 @@
+  hass_startup_command: !secret hass_startup_notify_command

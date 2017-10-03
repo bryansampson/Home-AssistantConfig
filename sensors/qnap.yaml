@@ -1,0 +1,58 @@
+- platform: qnap
+  host: !secret qnap_ip
+  port: !secret qnap_port
+  username: !secret qnap_username
+  password: !secret qnap_password
+  ssl: true
+  verify_ssl: false
+  monitored_conditions:
+    - status
+    - cpu_usage
+    - memory_percent_used
+    - network_rx
+    - network_tx
+    - volume_percentage_used
+    - volume_size_used
+    - volume_size_free
+    - system_temp
+    - cpu_temp
+    - drive_smart_status
+
+- platform: template
+  sensors:
+    hrwsqnap_name:
+      friendly_name: Name
+      value_template: '{{ states.sensor.hrwsqnap_status.attributes["Name"] }}'
+
+    hrwsqnap_model:
+      friendly_name: Model
+      value_template: '{{ states.sensor.hrwsqnap_status.attributes["Model"] }}'
+      icon_template: mdi:information-outline
+
+    hrwsqnap_uptime:
+      friendly_name: Uptime
+      value_template: '{{ states.sensor.hrwsqnap_status.attributes["Uptime"] }}'
+      icon_template: mdi:timer
+
+    hrwsqnap_drive_group_status:
+      value_template: >-
+        {{ 
+          states.sensor.hrwsqnap_smart_status_drive_01.state + 
+          states.sensor.hrwsqnap_smart_status_drive_02.state +
+          states.sensor.hrwsqnap_smart_status_drive_03.state +
+          states.sensor.hrwsqnap_smart_status_drive_04.state +
+          states.sensor.hrwsqnap_smart_status_drive_05.state +
+          states.sensor.hrwsqnap_smart_status_drive_06.state +
+          states.sensor.hrwsqnap_smart_status_drive_07.state +
+          states.sensor.hrwsqnap_smart_status_drive_08.state 
+        }}
+
+    hrwsqnap_drive_status:
+      friendly_name: Drive Status
+      icon_template: mdi:harddisk
+      value_template: >-
+        {% if is_state("sensor.hrwsqnap_drive_group_status", "OKOKOKOKOKOKOKOK") %}
+          Ok
+        {% else %}
+          Not Ok
+        {% endif %}

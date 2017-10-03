@@ -1,38 +1,12 @@
+#---------------------------------------------------------------------------------------------
+
 default_view:
+  name: Home
   view: yes
-  icon: mdi:home 
+  icon: mdi:home
   entities:
-    - group.living_room
-    - group.bedroom
-    - group.dining_room_kitchen
-    - group.climate
-    - group.family
     - group.harmony
-
-living_room:
-  name: Living Room
-  view: no
-  entities:
-   - light.living_room
-   - input_select.living_room_mood
-   - light.living_room_1
-   - light.living_room_2
-
-bedroom:
-  name: Bedroom
-  view: no
-  entities:
-   - light.bedroom
-   - input_select.bedroom_mood
-   - light.bryans_reading_lamp
-   - light.rosas_reading_lamp
-   
-dining_room_kitchen:
-  name: "Dining Room / Kitchen"
-  view: no
-  entities:
-   - light.dining_room
-   - light.kitchen
+    - group.climate
 
 climate:
   name: Climate Control
@@ -44,10 +18,64 @@ climate:
     - sensor.pws_weather
     - sensor.pws_temperature_string
 
+#---------------------------------------------------------------------------------------------
+
+lights_view:
+  name: Lights View
+  view: yes
+  icon: mdi:lightbulb
+  entities:
+    - group.living_room_lights
+    - group.bedroom_lights
+    - group.dining_room_kitchen
+    - group.living_room_camera
+
+living_room_lights:
+  name: Living Room
+  view: no
+  entities:
+    - light.living_room
+    - input_select.living_room_mood
+    - light.living_room_1
+    - light.living_room_2
+    - switch.disable_light_automations
+    - switch.enable_vacation_mode
+
+bedroom_lights:
+  name: Bedroom
+  view: no
+  entities:
+    - light.bedroom
+    - input_select.bedroom_mood
+    - light.bryans_reading_lamp
+    - light.rosas_reading_lamp
+
+dining_room_kitchen:
+  name: "Dining Room / Kitchen Lights"
+  view: no
+  entities:
+    - light.dining_room
+    - light.kitchen
+
+living_room_camera:
+  name: "Living Room Camera"
+  view: no
+  entities:
+    - camera.living_room_camera
+
+#---------------------------------------------------------------------------------------------
+
+family_View:
+  name: Family View
+  view: yes
+  icon: mdi:account-multiple
+  entities:
+    - group.family
+    - group.bryan_phone_camera
+
 family:
   name: Family
   view: no
-  icon: mdi:account-multiple
   entities:
     - device_tracker.bryan_cell
     - device_tracker.rosa_cell
@@ -56,7 +84,17 @@ family:
     - device_tracker.adam_cell
     - device_tracker.ruby
     - device_tracker.obi
+    - sensor.bryan_phone
+    - sensor.bryan_tablet
+    - sensor.bryan_laptop
 
+bryan_phone_camera:
+  name: Camera
+  view: no
+  entities:
+    - camera.bryan_phone_location
+
+#---------------------------------------------------------------------------------------------
 
 weather_view:
   name: Weather Conditions
@@ -94,37 +132,91 @@ forcast:
     - sensor.pws_weather_3d
     - sensor.pws_weather_4d
 
-media:
-  name: Media
+#---------------------------------------------------------------------------------------------
+
+media_view:
+  name: Media View
   view: yes
   icon: mdi:music
   entities:
-    - remote.harmony
+    - group.kodi
+    - group.google_home
+    - group.spotify
+
+kodi:
+  name: Kodi
+  view: no
+  entities:
     - media_player.kodi
+
+google_home:
+  name: Google Home
+  view: no
+  entities:
     - media_player.living_room_home
+
+spotify:
+  name: Spotify
+  view: no
+  entities:
     - media_player.spotify
 
-camera:
-  name: Camera
-  view: yes
-  icon: mdi:webcam
-  entities:
-    - camera.living_room_camera
+#---------------------------------------------------------------------------------------------
 
 network_view:
   name: Network
   view: yes
-  icon: mdi:network
-  entities:
-    - group.network
-    - group.internet
-
-internet:
-  name: Internet
-  view: no
+  icon: mdi:wan
   entities:
     - sensor.speedtest_ping
     - sensor.speedtest_download
     - sensor.speedtest_upload
     - sensor.fastcom_download
+    - group.network
+    - group.qnap
+    - group.ups
+
+# internet:
+  # name: Internet
+  # view: no
+  # entities:
+    # - sensor.speedtest_ping
+    # - sensor.speedtest_download
+    # - sensor.speedtest_upload
+    # - sensor.fastcom_download
+
+qnap:
+  name: QNAP Status
+  view: no
+  entities:
+    - sensor.hrwsqnap_uptime
+    - sensor.hrwsqnap_status
+    - sensor.hrwsqnap_system_temperature
+    - sensor.hrwsqnap_cpu_temperature
+    - sensor.hrwsqnap_cpu_usage
+    - sensor.hrwsqnap_memory_usage
+    - sensor.hrwsqnap_network_up_eth0
+    - sensor.hrwsqnap_network_down_eth0
+    - sensor.hrwsqnap_volume_used_datavol1
+    - sensor.hrwsqnap_used_space_datavol1
+    - sensor.hrwsqnap_free_space_datavol1
+    - sensor.hrwsqnap_drive_status
+
+
+
+ups:
+  name: UPS Battery
+  view: no
+  entities:
+    - sensor.ups_manufacturer
+    - sensor.ups_model
+    - sensor.ups_status_data
+    - sensor.ups_load
+    - sensor.ups_battery_charge
+    - sensor.ups_battery_runtime
+    - sensor.ups_input_voltage
+    - sensor.ups_nominal_real_power
+    - sensor.ups_selftest_result
+
+#---------------------------------------------------------------------------------------------
 

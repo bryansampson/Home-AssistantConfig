@@ -1,7 +1,10 @@
   living_room_mood:
     name: Mood Lighting
     options:
-      - Select Mood
+      - Powered Off
+      - Bright
+      - Dimmed
+      - Nightlight
       - Savanna Sunset
       - Tropical Twilight
       - Arctic Aurora
@@ -10,15 +13,15 @@
       - Read
       - Concentrate
       - Energize
-      - Bright
-      - Dimmed
-      - Nightlight
     icon: mdi:ceiling-light
 
   bedroom_mood:
     name: Mood Lighting
     options:
-      - Select Mood
+      - Powered Off
+      - Bright
+      - Dimmed
+      - Nightlight
       - Savanna Sunset
       - Tropical Twilight
       - Arctic Aurora
@@ -27,8 +30,5 @@
       - Read
       - Concentrate
       - Energize
-      - Bright
-      - Dimmed
-      - Nightlight
       - Sexy Time
     icon: mdi:ceiling-light

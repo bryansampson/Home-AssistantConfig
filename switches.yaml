@@ -1,0 +1,31 @@
+-  platform: command_line
+   switches:
+     light_automations:
+       command_on: echo "on" > /config/.enable_light_automations
+       command_off: echo "off" > /config/.enable_light_automations
+
+     vacation_mode:
+       command_on: echo "on" > /config/.enable_vacation_mode
+       command_off: echo "off" > /config/.enable_vacation_mode
+
+- platform: template
+  switches:
+    disable_light_automations:
+      friendly_name: Disable Lighting Automations
+      value_template: '{{ is_state("sensor.disable_light_automations", "on") }}'
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.light_automations
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.light_automations
+
+    enable_vacation_mode:
+      friendly_name: Enable Vacation Mode
+      value_template: '{{ is_state("sensor.enable_vacation_mode", "on") }}'
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.vacation_mode
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.vacation_mode

@@ -1,18 +1,21 @@
+#---------------------------------------------------------------------------------------------
+
 input_select:
   harmony:
     name: Harmony Control
+    icon: mdi:theater
     options:
       - Select Activity
-      - Watch Movies
+      - Watch Kodi
       - Watch Netflix
       - Watch YouTube
       - Watch TV
       - Play Xbox One
       - Play Xbox 360
-    icon: mdi:monitor
 
   harmony_power:
     name: Device Power
+    icon: mdi:power
     options:
       - Select Device
       - Living Room TV
@@ -21,7 +24,16 @@ input_select:
       - Fios DVR
       - Xbox One
       - Xbox 360
-    icon: mdi:power
+
+  harmony_tv_input:
+    name: TV Input
+    icon: mdi:television
+    options:
+      - Select Input
+      - TV
+      - Xbox
+      - Kodi
+      - PC
 
 sensor:
   - platform: template
@@ -30,8 +42,7 @@ sensor:
         friendly_name: 'Current Activity'
         value_template: '{{ states.remote.living_room.attributes.current_activity }}'
 
-
-#-------------------------------------------
+#---------------------------------------------------------------------------------------------
 
 group:
   harmony:
@@ -42,8 +53,66 @@ group:
       - sensor.current_activity
       - input_select.harmony
       - input_select.harmony_power
+      - input_select.harmony_tv_input
+      - script.living_room_amp_volume_up
+      - script.living_room_amp_volume_down
+      - script.living_room_amp_mute
+      - script.living_room_kodi_volume_up
+      - script.living_room_kodi_volume_down
+      - script.living_room_kodi_mute
 
-#-------------------------------------------
+#---------------------------------------------------------------------------------------------
+
+script:
+  living_room_amp_volume_up:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: 46085817
+          command: "VolumeUp"
+
+  living_room_amp_volume_down:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: 46085817
+          command: "VolumeDown"
+
+  living_room_amp_mute:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: 46085817
+          command: "Mute"
+
+  living_room_kodi_volume_up:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: 46085820
+          command: "VolumeUp"
+
+  living_room_kodi_volume_down:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: 46085820
+          command: "VolumeDown"
+
+  living_room_kodi_mute:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.living_room
+        data_template:
+          device: 46085820
+          command: "Mute"
+
+#---------------------------------------------------------------------------------------------
 
 automation:
   - alias: Harmony Activity
@@ -58,7 +127,7 @@ automation:
         entity_id: remote.living_room
         data_template:
           activity: >
-            {% if is_state("input_select.harmony", "Watch Movies") %}
+            {% if is_state("input_select.harmony", "Watch Kodi") %}
               27328018
             {% elif is_state("input_select.harmony", "Watch Netflix") %}
               27328946
@@ -77,107 +146,70 @@ automation:
         data_template:
           option: "Select Activity"
 
-  - alias: Living Room TV Power Toggle
+#---------------------------------------------------------------------------------------------
+
+  - alias: Living Room Harmony Power Toggle
     hide_entity: True
     trigger:
       platform: state
       entity_id: input_select.harmony_power
-      to: 'Living Room TV'
+      from: 'Select Device'
     action:
       - service: remote.send_command
         entity_id: remote.living_room
         data_template:
-          device: "46085815"
+          device: >
+            {% if is_state("input_select.harmony_power", "Living Room TV") %}
+              46085815
+            {% elif is_state("input_select.harmony_power", "Living Room Speakers") %}
+              46085817
+            {% elif is_state("input_select.harmony_power", "Android TV") %}
+              46085820
+            {% elif is_state("input_select.harmony_power", "Fios DVR") %}
+              46085818
+            {% elif is_state("input_select.harmony_power", "Xbox One") %}
+              46085814
+            {% elif is_state("input_select.harmony_power", "Xbox 360") %}
+              46085819
+            {% else %}
+            {% endif %}
           command: "PowerToggle"
       - service: input_select.select_option
         entity_id: input_select.harmony_power
         data_template:
           option: "Select Device"
 
-  - alias: Living Room Speakers Power Toggle
-    hide_entity: True
-    trigger:
-      platform: state
-      entity_id: input_select.harmony_power
-      to: 'Living Room Speakers'
-    action:
-      - service: remote.send_command
-        entity_id: remote.living_room
-        data_template:
-          device: "46085817"
-          command: "PowerToggle"
-      - service: input_select.select_option
-        entity_id: input_select.harmony_power
-        data_template:
-          option: "Select Device"
+#---------------------------------------------------------------------------------------------
 
-  - alias: Android TV Power Toggle
+  - alias: Living Room TV Input Select
     hide_entity: True
     trigger:
       platform: state
-      entity_id: input_select.harmony_power
-      to: 'Android TV'
+      entity_id: input_select.harmony_tv_input
+      from: 'Select Input'
     action:
       - service: remote.send_command
         entity_id: remote.living_room
         data_template:
-          device: "46085820"
-          command: "PowerToggle"
+          device: 46085815
+          command: >
+            {% if is_state("input_select.harmony_tv_input", "TV") %}
+              InputHdmi1
+            {% elif is_state("input_select.harmony_tv_input", "Xbox") %}
+              InputHdmi2
+            {% elif is_state("input_select.harmony_tv_input", "Kodi") %}
+              InputHdmi3
+            {% elif is_state("input_select.harmony_tv_input", "PC") %}
+              InputHdmi4
+            {% else %}
+            {% endif %}
       - service: input_select.select_option
-        entity_id: input_select.harmony_power
+        entity_id: input_select.harmony_tv_input
         data_template:
-          option: "Select Device"
+          option: "Select Input"
 
-  - alias: FIOS DVR Power Toggle
-    hide_entity: True
-    trigger:
-      platform: state
-      entity_id: input_select.harmony_power
-      to: 'FIOS DVR'
-    action:
-      - service: remote.send_command
-        entity_id: remote.living_room
-        data_template:
-          device: "46085818"
-          command: "PowerToggle"
-      - service: input_select.select_option
-        entity_id: input_select.harmony_power
-        data_template:
-          option: "Select Device"
+#---------------------------------------------------------------------------------------------
 
-  - alias: Xbox One Power Toggle
-    hide_entity: True
-    trigger:
-      platform: state
-      entity_id: input_select.harmony_power
-      to: 'Xbox One'
-    action:
-      - service: remote.send_command
-        entity_id: remote.living_room
-        data_template:
-          device: "46085814"
-          command: "PowerToggle"
-      - service: input_select.select_option
-        entity_id: input_select.harmony_power
-        data_template:
-          option: "Select Device"
-
-  - alias: Xbox Power Toggle
-    hide_entity: True
-    trigger:
-      platform: state
-      entity_id: input_select.harmony_power
-      to: 'Xbox 360'
-    action:
-      - service: remote.send_command
-        entity_id: remote.living_room
-        data_template:
-          device: "46085819"
-          command: "PowerToggle"
-      - service: input_select.select_option
-        entity_id: input_select.harmony_power
-        data_template:
-          option: "Select Device"
 
   - alias: Harmony Off
     hide_entity: True
@@ -192,3 +224,6 @@ automation:
         entity_id: input_select.harmony
         data_template:
           option: "Select Activity"
+
+#---------------------------------------------------------------------------------------------
+

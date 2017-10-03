@@ -12,15 +12,16 @@ homeassistant:
   time_zone: !secret time_zone
 
   customize_glob:
-    lights.*:
+    "*.*":
       custom_ui_state_card: state-card-custom-ui
-      state_card_mode: break-slider
-      stretch_slider: true
       hide_control: false
 
-    group.family:
+    "light.*":
       custom_ui_state_card: state-card-custom-ui
-      state_card_mode: badges
+      hide_control: false
+      state_card_mode: single-line
+      stretch_slider: true
+
 
 # Customization file
   customize: !include customize.yaml
@@ -55,7 +56,7 @@ http:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
+  include_used_components: true
 
 recorder:
   db_url: !secret db_url
@@ -79,12 +80,6 @@ sun:
 tts:
   - platform: google
 
-light: !include lights.yaml
-
-remote: !include remotes.yaml
-
-media_player: !include media_players.yaml
-
 # Nest Thermostat
 nest:
   client_id: !secret nest_client_id
@@ -94,14 +89,22 @@ nest:
 ifttt:
   key: !secret ifttt_key
 
-mqtt: !include mqtt.yaml
-device_tracker: !include device_tracker.yaml
-camera: !include cameras.yaml
-sensor: !include_dir_merge_list sensors
-input_slider: !include input_sliders.yaml
-input_select: !include input_selects.yaml
-panel_iframe: !include panel_iframes.yaml
-group: !include groups.yaml
+# Included components
 automation: !include automations.yaml
+camera: !include cameras.yaml
+device_tracker: !include device_tracker.yaml
+binary_sensor: !include binary_sensors.yaml
+input_select: !include input_selects.yaml
+#input_slider: !include input_sliders.yaml
+light: !include lights.yaml
+group: !include groups.yaml
+media_player: !include media_players.yaml
+mqtt: !include mqtt.yaml
+notify: !include notifications.yaml
+panel_iframe: !include panel_iframes.yaml
+remote: !include remotes.yaml
 scene: !include_dir_list scenes
 script: !include scripts.yaml
+sensor: !include_dir_merge_list sensors
+shell_command: !include shell_commands.yaml
+switch: !include switches.yaml

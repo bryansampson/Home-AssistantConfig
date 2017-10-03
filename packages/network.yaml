@@ -1,5 +1,11 @@
 homeassistant:
   customize:
+    sensor.hass_version:
+      icon: mdi:raspberrypi
+
+    sensor.hass_uptime:
+      icon: mdi:timer
+
     sensor.linksys_router:
       icon: mdi:wan
 
@@ -119,8 +125,8 @@ group:
   network:
    name: Network Devices
    entities:
-      - sensor.ha_installed_version
-      - sensor.ha_uptime
+      - sensor.hass_version
+      - sensor.hass_uptime
       - sensor.since_last_boot_templated
       - sensor.disk_use_
       - sensor.linksys_router

@@ -5,14 +5,14 @@
       transition: 2
       brightness: 203
       color_temp: 500
-      rgb_color: 255,158,80
+      rgb_color: [255,158,80]
 
     light.living_room_2:
       state: on
       transition: 2
       brightness: 203
       color_temp: 379
-      rgb_color: 255,219,83
+      rgb_color: [255,219,83]
 
 #-------------------------------------------
 
@@ -23,14 +23,14 @@
       transition: 2
       brightness: 112
       color_temp: 399
-      rgb_color: 221,157,106
+      rgb_color: [221,157,106]
 
     light.living_room_2:
       state: on
       transition: 2
       brightness: 112
       color_temp: 153
-      rgb_color: 194,162,242
+      rgb_color: [194,162,242]
 
 #-------------------------------------------
 
@@ -41,14 +41,14 @@
       transition: 2
       brightness: 142
       color_temp: 153
-      rgb_color: 72,226,191
+      rgb_color: [72,226,191]
 
     light.living_room_2:
       state: on
       transition: 2
       brightness: 142
       color_temp: 153
-      rgb_color: 150,213,179
+      rgb_color: [150,213,179]
 
 #-------------------------------------------
 
@@ -59,14 +59,14 @@
       transition: 2
       brightness: 216
       color_temp: 340
-      rgb_color: 255,150,183
-
+      rgb_color: [255,150,183]
+      
     light.living_room_2:
       state: on
       transition: 2
       brightness: 216
       color_temp: 195
-      rgb_color: 253,229,239
+      rgb_color: [253,229,239]
 
 #-------------------------------------------
 
@@ -77,14 +77,14 @@
       transition: 2
       brightness: 144
       color_temp: 443
-      rgb_color: 243,179,80
+      rgb_color: [243,179,80]
 
     light.living_room_2:
       state: on
       transition: 2
       brightness: 144
       color_temp: 443
-      rgb_color: 243,179,80
+      rgb_color: [243,179,80]
 
 #-------------------------------------------
 
@@ -95,14 +95,14 @@
       transition: 2
       brightness: 254
       color_temp: 343
-      rgb_color: 255,211,130
+      rgb_color: [255,211,130]
 
     light.living_room_2:
       state: on
       transition: 2
       brightness: 254
       color_temp: 343
-      rgb_color: 255,211,130
+      rgb_color: [255,211,130]
 
 #-------------------------------------------
 
@@ -113,14 +113,14 @@
       transition: 2
       brightness: 254
       color_temp: 230
-      rgb_color: 255,241,199
+      rgb_color: [255,241,199]
 
     light.living_room_2:
       state: on
       transition: 2
       brightness: 254
       color_temp: 230
-      rgb_color: 255,241,199
+      rgb_color: [255,241,199]
 
 #-------------------------------------------
 
@@ -131,14 +131,14 @@
       transition: 2
       brightness: 254
       color_temp: 156
-      rgb_color: 246,255,254
+      rgb_color: [246,255,254]
 
     light.living_room_2:
       state: on
       transition: 2
       brightness: 254
       color_temp: 156
-      rgb_color: 246,255,254
+      rgb_color: [246,255,254]
 
 #-------------------------------------------
 
@@ -149,14 +149,14 @@
       transition: 5
       brightness: 254
       color_temp: 366
-      rgb_color: 255,207,120
+      rgb_color: [255,207,120]
 
     light.living_room_2:
       state: on
       transition: 5
       brightness: 254
       color_temp: 366
-      rgb_color: 255,207,120
+      rgb_color: [255,207,120]
 
 #-------------------------------------------
 
@@ -167,14 +167,14 @@
       transition: 5
       brightness: 77
       color_temp: 366
-      rgb_color: 174,140,79
+      rgb_color: [174,140,79]
 
     light.living_room_2:
       state: on
       transition: 5
       brightness: 77
       color_temp: 366
-      rgb_color: 174,140,79
+      rgb_color: [174,140,79]
 
 #-------------------------------------------
 
@@ -185,30 +185,29 @@
       transition: 2
       brightness: 1
       color_temp: 500
-      rgb_color: 21,8,0
+      rgb_color: [21,8,0]
 
     light.living_room_2:
       state: on
       transition: 2
       brightness: 1
       color_temp: 500
-      rgb_color: 21,8,0
+      rgb_color: [21,8,0]
 
 #-------------------------------------------
 
 - name: bedroom_dimmed
-  entities:
+  entities: 
     light.bryans_reading_lamp:
       state: on
-      transition: 5
+      transition: 2
       brightness: 77
       color_temp: 366
-      rgb_color: 174,140,79
+      rgb_color: [174,140,79]
 
     light.rosas_reading_lamp:
-     state: on
-     transition: 5
-     brightness: 77
-     color_temp: 366
-     rgb_color: 174,140,79
-
+      state: on
+      transition: 2
+      brightness: 77
+      color_temp: 366
+      rgb_color: [174,140,79]

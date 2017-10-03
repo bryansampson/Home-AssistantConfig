@@ -1,7 +1,17 @@
 - platform: mjpeg
   name: living_room_camera
-  friendly_name: Living Room Camera
   mjpeg_url: !secret camera_mjpeg_url
   still_image_url: !secret camera_still_image_url
   username: !secret camera_username
   password: !secret camera_password
+
+
+- platform: generic
+  name: bryan_phone_location
+  still_image_url: !secret google_maps_url
+  limit_refetch_to_url_change: true
+
+- platform: generic
+  name: caltech_eq_map
+  still_image_url: http://scedc.caltech.edu/recent/index_map.gif
+  limit_refetch_to_url_change: true

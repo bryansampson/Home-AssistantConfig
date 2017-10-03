@@ -1,0 +1,17 @@
+- platform: nut
+  name: UPS
+  alias: qnapups
+  host: !secret qnap_ip
+  username: !secret qnap_username
+  password: !secret qnap_password
+  resources:
+    - ups.mfr
+    - ups.model
+    - ups.status
+    - ups.load
+    - ups.realpower.nominal
+    - input.voltage
+    - input.transfer.reason
+    - battery.charge
+    - battery.runtime
+    - ups.test.result

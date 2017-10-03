@@ -1,0 +1,9 @@
+- platform: command_line
+  name: "Disable Light Automations"
+  command: >-
+      cat /config/.enable_light_automations
+
+- platform: command_line
+  name: "Enable Vacation Mode"
+  command: >-
+      cat /config/.enable_vacation_mode

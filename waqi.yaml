@@ -1,0 +1,7 @@
+- platform: waqi
+  token: !secret waqi_api_token
+  locations:
+    - losangeles
+  stations:
+    - North Long Beach
+    - South Long Beach
