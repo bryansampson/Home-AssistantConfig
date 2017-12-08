@@ -47,6 +47,14 @@ switch.enable_vacation_mode:
   icon: mdi:beach
   confirm_controls_show_lock: true
 
+switch.front_door_lock:
+  entity_picture: /local/images/kevo.png
+  confirm_controls_show_lock: true
+
+switch.back_door_lock:
+  entity_picture: /local/images/kevo.png
+  confirm_controls_show_lock: true
+
 climate.hallway:
   friendly_name: Nest Thermostat
   entity_picture: /local/images/nest.png

@@ -7,6 +7,7 @@ default_view:
   entities:
     - group.harmony
     - group.climate
+    - group.door_locks
 
 climate:
   name: Climate Control
@@ -17,6 +18,13 @@ climate:
     - sensor.day_night
     - sensor.pws_weather
     - sensor.pws_temperature_string
+
+door_locks:
+  name: Door Locks
+  view: no
+  entities:
+    - switch.front_door_lock
+    - switch.back_door_lock
 
 #---------------------------------------------------------------------------------------------
 
@@ -141,6 +149,7 @@ media_view:
   entities:
     - group.kodi
     - group.google_home
+    - group.google_mini
     - group.spotify
 
 kodi:
@@ -154,6 +163,12 @@ google_home:
   view: no
   entities:
     - media_player.living_room_home
+
+google_mini:
+  name: Google Mini
+  view: no
+  entities:
+    - media_player.master_bedroom_speaker
 
 spotify:
   name: Spotify

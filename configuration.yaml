@@ -34,7 +34,9 @@ homeassistant:
 # Enables the frontend
 frontend:
   extra_html_url:
-    - /local/custom_ui/state-card-custom-ui.html
+    - https://raw.githubusercontent.com/andrey-git/home-assistant-custom-ui/master/state-card-custom-ui.html
+  extra_html_url_es5:
+    - https://raw.githubusercontent.com/andrey-git/home-assistant-custom-ui/master/state-card-custom-ui-es5.html
 
 # Enables configuration UI
 config:
